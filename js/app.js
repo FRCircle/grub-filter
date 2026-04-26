@@ -64,6 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
       els.locationSelect.addEventListener('change', (e) => {
         loadLocation(e.target.value);
       });
+
+      els.clearBtn.addEventListener('click', clearAllFilters);
       
     } catch (e) {
       console.error('Error loading data:', e);
@@ -133,14 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
       sortedKeys.forEach(val => {
         const btn = document.createElement('button');
         btn.className = 'chip';
-        btn.innerHTML = `${val}`;
+        // Capitalize the label for a cleaner UI
+        const label = val.charAt(0).toUpperCase() + val.slice(1);
+        btn.innerHTML = label;
         
         btn.addEventListener('click', () => toggleFilter(key, val, btn));
         container.appendChild(btn);
       });
     });
-
-    els.clearBtn.addEventListener('click', clearAllFilters);
   }
 
   // Toggle a specific filter value

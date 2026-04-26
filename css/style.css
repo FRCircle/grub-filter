@@ -2,7 +2,7 @@
    Grub Finder — HTML5 UP Inspired Design System
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap');
 
 :root {
   --bg-base:        #212428;
@@ -15,8 +15,8 @@
   --text-secondary: #a0aab2;
   --text-muted:     #7f888f;
 
-  --accent:         #f56a6a;       /* Red */
-  --accent-soft:    rgba(245, 106, 106, 0.1);
+  --accent:         #4ade80;       /* Green */
+  --accent-soft:    rgba(74, 222, 128, 0.1);
   --accent-hover:   #ffca28;       /* Yellow */
 
   --chip-active-bg:   var(--accent);
@@ -35,7 +35,7 @@
   --radius-sm:  0.25rem;
 
   --font-body:    'Source Sans Pro', Helvetica, sans-serif;
-  --font-heading: 'Roboto Slab', serif;
+  --font-heading: 'Source Sans Pro', Helvetica, sans-serif;
 
   --duration-fast: 150ms;
 }
@@ -103,10 +103,10 @@ body {
 
 .header__title {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 900;
   font-size: 2rem;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .header__subtitle {
@@ -288,7 +288,7 @@ body {
 
 .card__name {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 900;
   font-size: 1.3rem;
   color: var(--text-primary);
   line-height: 1.3;

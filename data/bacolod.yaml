@@ -28,7 +28,7 @@ places:
     description: Japanese curry chain
     cuisine: japanese
     type: restaurant
-    ownership: international
+    ownership: national
     price: "$$$"
     tags: ["rice", "curry"]
     address:
