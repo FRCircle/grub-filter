@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeFilters = {
     cuisine: new Set(),
     type: new Set(),
-    ownership: new Set(),
     price: new Set(),
     tags: new Set()
   };
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     filters: {
       cuisine: document.getElementById('filterCuisine'),
       type: document.getElementById('filterType'),
-      ownership: document.getElementById('filterOwnership'),
       price: document.getElementById('filterPrice'),
       tags: document.getElementById('filterTags')
     }
@@ -100,14 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterData = {
       cuisine: new Map(),
       type: new Map(),
-      ownership: new Map(),
       price: new Map(),
       tags: new Map()
     };
 
     // Extract and count values
     allPlaces.forEach(place => {
-      ['cuisine', 'type', 'ownership', 'price'].forEach(key => {
+      ['cuisine', 'type', 'price'].forEach(key => {
         if (place[key]) {
           const val = place[key].toLowerCase();
           filterData[key].set(val, (filterData[key].get(val) || 0) + 1);
