@@ -1,22 +1,52 @@
 title: "Bago City"
 places:
-  - name: Side Bites
-    description: Test
+  - name: 1966 Café & Restaurant
+    description: Popular cozy restaurant near City Hall offering Filipino and international dishes in a well-designed interior.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["family", "date", "coffee"]
+    address:
+      - loc: "Corner Bonifacio & Mabini St, Bago City"
+        gmap: "https://maps.app.goo.gl/bago1966cafe"
+  - name: Steering Wheel Café
+    description: Uniquely themed automotive-inspired café known for pastries, siopao, and special spaghetti.
     cuisine: fusion
     type: cafe
-    ownership: international
-    price: "$"
-    tags: ["coffee", "pastries", "wifi"]
-    address: 
-      - loc: "Bago City Public Market"
-        gmap: "https://maps.app.goo.gl/placeholder1"
-  - name: McDonald's
-    description: International chain
-    cuisine: american
-    type: fastfood
     ownership: local
     price: "$"
-    tags: ["rice", "burger", "chicken"]
-    address: 
-      - loc: "Bago City Center"
-        gmap: "https://maps.app.goo.gl/placeholder2"
+    tags: ["pastries", "coffee", "themed"]
+    address:
+      - loc: "Bantayan Park, Bago City"
+        gmap: "https://maps.app.goo.gl/steeringwheelbago"
+  - name: Café Ganin
+    description: Coffee farm café offering locally sourced Liberica coffee with plantation tours and native ambiance.
+    cuisine: filipino
+    type: cafe
+    ownership: local
+    price: "$"
+    tags: ["coffee", "farm", "agritourism"]
+    address:
+      - loc: "Purok Michelle, Hda. Conchita, Dulao, Bago City"
+        gmap: "https://maps.app.goo.gl/cafeganinbago"
+  - name: McDonald's Bago
+    description: International fast food chain serving burgers, fries, chicken, and breakfast meals.
+    cuisine: american
+    type: fastfood
+    ownership: international
+    price: "$"
+    tags: ["burger", "chicken", "breakfast"]
+    address:
+      - loc: "National Highway, Bago City"
+        gmap: "https://maps.app.goo.gl/maboricdbago"
+  - name: Bantayan Park Food Stalls
+    description: Waterfront food stalls along the river serving fresh seafood, grilled favorites, and local snacks.
+    cuisine: filipino
+    type: streetfood
+    ownership: local
+    price: "$"
+    tags: ["seafood", "grill", "riverview"]
+    address:
+      - loc: "Bantayan Park, Bago City"
+        gmap: "https://maps.app.goo.gl/bantayanparkbago"

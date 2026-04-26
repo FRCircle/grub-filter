@@ -2,9 +2,9 @@ title: "Bacolod City"
 places:
   - name: Starbucks
     description: Famous international coffee shop chain
-    cuisine: western
+    cuisine: american
     type: cafe
-    ownership: american
+    ownership: international
     price: "$$"
     tags: ["coffee", "pastries", "wifi"]
     address: 
@@ -28,7 +28,7 @@ places:
     description: Japanese curry chain
     cuisine: japanese
     type: restaurant
-    ownership: national
+    ownership: international
     price: "$$$"
     tags: ["rice", "curry"]
     address:
