@@ -8,6 +8,14 @@ A modern, dark-themed static web application for filtering and discovering local
 - **Data-Driven**: Powered entirely by easily editable `.yaml` files. The app uses `js-yaml` via CDN to parse data on the fly.
 - **Premium Design**: Features a sleek dark mode with glassmorphic elements, dynamic CSS Grid layouts, and micro-animations.
 
+## Quick Start
+
+If you have `make` installed, you can use the following shortcuts:
+
+- `make run` - Start a local server (port 8000)
+- `make docker-run` - Start with Docker (port 8080)
+- `make clean` - Remove local node dependencies
+
 ## How to Run Locally
 
 Since the app uses `fetch()` to load the local YAML data files, you must serve it using a local HTTP server (opening `index.html` directly via `file://` in your browser will cause CORS errors).
@@ -24,6 +32,16 @@ Alternatively, if you prefer **Node.js**:
 ```bash
 npx serve .
 ```
+
+### Running with Docker
+
+If you have Docker installed, you can run the app without installing any local dependencies:
+
+```bash
+# Build and start the container
+docker-compose up --build
+```
+*(The app will be available at http://localhost:8080. Local changes will sync automatically via volumes.)*
 
 ## How to Deploy to GitHub Pages
 

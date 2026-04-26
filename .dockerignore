@@ -1,0 +1,8 @@
+node_modules
+.git
+.DS_Store
+Dockerfile
+README.md
+LICENSE
+package.json
+package-lock.json
