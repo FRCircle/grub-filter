@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const DATA_URL = 'data/negocc.yaml';
+  const DATA_FILES = ['data/bacolod.yaml', 'data/bago.yaml'];
 
   // State
+  let allLocations = {};
+  let currentFile = '';
   let allPlaces = [];
   let activeFilters = {
     cuisine: new Set(),
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements
   const els = {
+    locationSelect: document.getElementById('locationSelect'),
     grid: document.getElementById('resultsGrid'),
     count: document.getElementById('resultsCount'),
     clearBtn: document.getElementById('clearFilters'),
@@ -28,15 +31,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize
   async function init() {
     try {
-      const response = await fetch(DATA_URL);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const yamlText = await response.text();
+      const fetches = DATA_FILES.map(url => 
+        fetch(url).then(res => res.ok ? res.text() : null).then(text => {
+          if (!text) return null;
+          return { url, data: jsyaml.load(text) };
+        })
+      );
       
-      const data = jsyaml.load(yamlText);
-      allPlaces = data.places || [];
+      const results = await Promise.all(fetches);
+      
+      els.locationSelect.innerHTML = ''; // clear loading
 
-      buildFilters();
-      applyFilters();
+      results.forEach(res => {
+        if (res && res.data) {
+          allLocations[res.url] = res.data;
+          const option = document.createElement('option');
+          option.value = res.url;
+          option.textContent = res.data.title || res.url;
+          els.locationSelect.appendChild(option);
+        }
+      });
+
+      if (Object.keys(allLocations).length === 0) {
+        throw new Error("No data loaded");
+      }
+
+      // Set initial
+      currentFile = els.locationSelect.value;
+      loadLocation(currentFile);
+
+      // Listen for changes
+      els.locationSelect.addEventListener('change', (e) => {
+        loadLocation(e.target.value);
+      });
       
     } catch (e) {
       console.error('Error loading data:', e);
@@ -49,6 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
   }
+
+  function loadLocation(fileUrl) {
+    currentFile = fileUrl;
+    allPlaces = allLocations[fileUrl].places || [];
+    
+    // Clear active filters
+    Object.keys(activeFilters).forEach(key => activeFilters[key].clear());
+    
+    buildFilters();
+    applyFilters();
+  }
+
 
   // Build filter UI dynamically based on data
   function buildFilters() {

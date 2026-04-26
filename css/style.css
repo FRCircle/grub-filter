@@ -126,8 +126,60 @@ body::before {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin-top: var(--space-xs);
+  margin-bottom: var(--space-lg);
 }
 
+/* ---------- Location Selector ---------- */
+.location-picker {
+  display: inline-block;
+  position: relative;
+  margin-top: var(--space-md);
+}
+
+.location-picker::after {
+  content: '▼';
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.location-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.6rem 2.5rem 0.6rem 1.2rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.location-select:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent-soft);
+}
+
+.location-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.location-select option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+/* ---------- Filter Panel ---------- */
 .filter-panel {
   background: var(--bg-glass);
   backdrop-filter: blur(20px) saturate(1.2);
