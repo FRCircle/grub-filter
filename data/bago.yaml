@@ -3,7 +3,6 @@ places:
   - name: Side Bites
     description: Test
     cuisine: asian
-    sub_cuisine: "filipino"
     type: cafe
     ownership: international
     price: "$"
@@ -14,7 +13,6 @@ places:
   - name: McDonald's
     description: International chain
     cuisine: asian
-    sub_cuisine: "american"
     type: fastfood
     ownership: local
     price: "$"

@@ -3,7 +3,6 @@ places:
   - name: Starbucks
     description: Famous international coffee shop chain
     cuisine: western
-    sub_cuisine: "american"
     type: cafe
     ownership: international
     price: "$$"
@@ -18,7 +17,6 @@ places:
   - name: Aida's Chicken
     description: Local inasal chain
     cuisine: asian
-    sub_cuisine: "filipino"
     type: restaurant
     ownership: local
     price: "$"
@@ -28,11 +26,10 @@ places:
         gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
   - name: CoCo Ichibanya
     description: Japanese curry chain
-    cuisine: asian
-    sub_cuisine: "japanese"
+    cuisine: japanese
     type: restaurant
     ownership: international
-    price: "$$"
+    price: "$$$"
     tags: ["rice", "curry"]
     address:
       - loc: "SM City Bacolod, Bacolod City"

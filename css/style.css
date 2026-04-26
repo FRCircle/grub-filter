@@ -385,3 +385,63 @@ body {
     padding: var(--space-lg);
   }
 }
+
+.footer {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: var(--space-3xl);
+  opacity: 0.6;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Optional Filter Styles */
+.filter-group--optional summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  user-select: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.filter-group--optional summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-group--optional summary::after {
+  content: '+';
+  font-size: 0.9rem;
+  margin-left: auto;
+  color: var(--accent);
+  transition: transform var(--duration-fast) ease;
+}
+
+.filter-group--optional[open] summary::after {
+  content: '−';
+}
+
+.filter-group--optional .filter-group__chips {
+  margin-top: var(--space-sm);
+  padding-bottom: var(--space-md);
+}
