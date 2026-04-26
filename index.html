@@ -27,44 +27,47 @@
       </div>
     </header>
 
-    <main>
-      <section class="filter-panel" aria-label="Filters">
-        <div class="filter-panel__header">
-          <h2 class="filter-panel__title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-            Filters
-          </h2>
-          <button id="clearFilters" class="filter-panel__clear">Clear All</button>
-        </div>
+    <main class="main-layout">
+      <!-- Left Sidebar: Filters -->
+      <aside class="sidebar" aria-label="Filters">
+        <div class="filter-panel">
+          <div class="filter-panel__header">
+            <h2 class="filter-panel__title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+              Filters
+            </h2>
+            <button id="clearFilters" class="filter-panel__clear">Clear All</button>
+          </div>
 
-        <!-- Filter Groups injected by JS -->
-        <div class="filter-group">
-          <span class="filter-group__label">Cuisine</span>
-          <div id="filterCuisine" class="filter-group__chips"></div>
-        </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Cuisine</span>
+            <div id="filterCuisine" class="filter-group__chips"></div>
+          </div>
 
-        <div class="filter-group">
-          <span class="filter-group__label">Type</span>
-          <div id="filterType" class="filter-group__chips"></div>
-        </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Type</span>
+            <div id="filterType" class="filter-group__chips"></div>
+          </div>
 
-        <div class="filter-group">
-          <span class="filter-group__label">Price</span>
-          <div id="filterPrice" class="filter-group__chips"></div>
-        </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Price</span>
+            <div id="filterPrice" class="filter-group__chips"></div>
+          </div>
 
-        <div class="filter-group">
-          <span class="filter-group__label">Ownership</span>
-          <div id="filterOwnership" class="filter-group__chips"></div>
-        </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Ownership</span>
+            <div id="filterOwnership" class="filter-group__chips"></div>
+          </div>
 
-        <div class="filter-group">
-          <span class="filter-group__label">Tags</span>
-          <div id="filterTags" class="filter-group__chips"></div>
+          <div class="filter-group">
+            <span class="filter-group__label">Tags</span>
+            <div id="filterTags" class="filter-group__chips"></div>
+          </div>
         </div>
-      </section>
+      </aside>
 
-      <section aria-label="Results">
+      <!-- Right: Results -->
+      <section class="results-panel" aria-label="Results">
         <div class="results-info">
           <span id="resultsCount" class="results-info__count">Loading...</span>
         </div>

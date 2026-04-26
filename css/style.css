@@ -89,9 +89,39 @@ body::before {
 .app {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-lg) var(--space-3xl);
+  padding: var(--space-lg) var(--space-xl) var(--space-3xl);
+}
+
+/* ---------- Two-Column Layout ---------- */
+.main-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: var(--space-lg);
+  max-height: calc(100vh - var(--space-xl));
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-raised) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--bg-raised);
+  border-radius: var(--radius-pill);
+}
+
+.results-panel {
+  min-width: 0;
 }
 
 .header {
@@ -187,7 +217,6 @@ body::before {
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  margin-bottom: var(--space-xl);
   transition: box-shadow var(--duration-med) var(--ease-out-expo);
 }
 
@@ -314,7 +343,7 @@ body::before {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-lg);
 }
 
@@ -513,6 +542,18 @@ body::before {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
 @media (max-width: 768px) {
