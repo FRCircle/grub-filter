@@ -34,7 +34,7 @@ python3 -m http.server 8000
 3. In the left sidebar, click on **Pages**.
 4. Under **Build and deployment**, ensure the **Source** is set to "Deploy from a branch".
 5. Select your `main` branch and the `/ (root)` folder, then click **Save**.
-6. Your site will be live at `https://<your-username>.github.io/grub-filter/` within minutes.
+6. Your site will be live at `https://frcircle.github.io/grub-filter/` within minutes.
 
 ## Managing Data
 
