@@ -1,36 +1,204 @@
 title: "Bacolod City"
 places:
+  - name: Aida's Chicken Inasal
+    description: The most iconic stall at Manokan Country, famous for its smoky, tangy, and perfectly grilled chicken inasal.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["inasal", "chicken", "barbecue"]
+    address:
+      - loc: "Manokan Country, Fr. Ferrero St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+  - name: Chicken House
+    description: Popular multi-branch inasal chain known for consistent, flavorful grilled chicken and unlimited rice.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["inasal", "chicken", "rice"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/chickenhouse"
+  - name: Calea Pastries & Coffee
+    description: Bacolod's most famous dessert destination, renowned for its Chocolate Mud Pie and wide array of cakes and cheesecakes.
+    cuisine: american
+    type: cafe
+    ownership: local
+    price: "$$"
+    tags: ["dessert", "cake", "coffee"]
+    address:
+      - loc: "15th St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/caleabacolod"
+  - name: Bob's Restaurant
+    description: A 60-year Bacolod institution since 1965, known for Sate Babe pork skewers, Baby Back Ribs, and classic American comfort food.
+    cuisine: american
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["ribs", "steak", "classic"]
+    address:
+      - loc: "B.S. Aquino Drive (North Drive), Bacolod City"
+        gmap: "https://maps.app.goo.gl/bobsbacolod"
+  - name: 21 Restaurant
+    description: Beloved establishment with a continental twist on Negrense favorites including batchoy, herb chicken, and seafood.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["batchoy", "seafood", "continental"]
+    address:
+      - loc: "21st St corner Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/21restaurant"
+  - name: Felicia's Pastry Cafe
+    description: Top-tier pastry cafe praised for Sans Rival, Ensaymada, macarons, and refined desserts alongside full meals.
+    cuisine: american
+    type: cafe
+    ownership: local
+    price: "$$"
+    tags: ["dessert", "pastries", "sans rival"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/feliciasbacolod"
+  - name: Sharyn's Cansi House
+    description: Internationally recognized eatery famous for cansi — a sour, beefy soup made with batuan fruit, a Bacolod signature.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["cansi", "soup", "beef"]
+    address:
+      - loc: "Narra Ave, Capitol Shopping Center, Bacolod City"
+        gmap: "https://maps.app.goo.gl/sharynscansi"
+  - name: 18th Street Pala-Pala
+    description: Fresh seafood market dining where you pick your own catch and have it cooked to order — grilled, buttered, or steamed.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["seafood", "paluto", "grill"]
+    address:
+      - loc: "18th St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/18thstreetpalapala"
+  - name: Pendy's
+    description: Long-standing local favorite for homey meals, napoleones, piaya, cakes, and classic Negrense snacks.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["napoleones", "piaya", "snacks"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/pendysbacolod"
+  - name: Quan Delicacies
+    description: Bacolod institution for authentic local delicacies, kakanin, and traditional Filipino snacks — a must for pasalubong.
+    cuisine: filipino
+    type: cafe
+    ownership: local
+    price: "$"
+    tags: ["delicacies", "pasalubong", "kakanin"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/quandelicacies"
+  - name: Imay's Restaurant
+    description: Classic Filipino restaurant on Restaurant Row serving home-style Negrense dishes and grilled specialties.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["negrense", "homecook", "grill"]
+    address:
+      - loc: "6th St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/imaysbacolod"
+  - name: Merkado Cafe
+    description: Farm-to-table restaurant focusing on organic, locally sourced ingredients and healthy Filipino dishes.
+    cuisine: filipino
+    type: cafe
+    ownership: local
+    price: "$$"
+    tags: ["organic", "farm-to-table", "healthy"]
+    address:
+      - loc: "Burgos St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/merkadocafe"
+  - name: Il Padrino
+    description: Cozy Italian-inspired coffee shop and restaurant serving pasta, pizza, and specialty coffees.
+    cuisine: italian
+    type: cafe
+    ownership: local
+    price: "$$"
+    tags: ["coffee", "pasta", "pizza"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/ilpadrinobacolod"
   - name: Starbucks
-    description: Famous international coffee shop chain
+    description: Famous international coffee shop chain known for its espresso drinks, frappuccinos, and cozy workspace atmosphere.
     cuisine: american
     type: cafe
     ownership: international
     price: "$$"
     tags: ["coffee", "pastries", "wifi"]
-    address: 
+    address:
       - loc: "Lacson St, Bacolod City"
-        gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
-      - loc: "Loc2"  
-        gmap: "https://maps.app.goo.gl/SSbSDKkhtdx3pNU67"
-      - loc: "Loc3"
-        gmap: "https://maps.app.goo.gl/ZrGHRBoAZtCFXJqBA"
-  - name: Aida's Chicken
-    description: Local inasal chain
-    cuisine: filipino
-    type: restaurant
-    ownership: local
-    price: "$"
-    tags: ["rice", "chicken", "barbecue",]
-    address: 
-      - loc: "Manokan Country, Bacolod City"
-        gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+        gmap: "https://maps.app.goo.gl/starbucksbacolod"
+      - loc: "SM City Bacolod"
+        gmap: "https://maps.app.goo.gl/starbuckssmbacolod"
   - name: CoCo Ichibanya
-    description: Japanese curry chain
+    description: Popular Japanese curry chain offering customizable curry rice bowls with various toppings and spice levels.
     cuisine: japanese
     type: restaurant
     ownership: international
     price: "$$$"
-    tags: ["rice", "curry"]
+    tags: ["curry", "rice", "japanese"]
     address:
       - loc: "SM City Bacolod, Bacolod City"
         gmap: "https://maps.app.goo.gl/ND2wsX1hgCC6xTo66"
+  - name: Gina's Seafoods Restaurant
+    description: Welcoming restaurant known for fresh, high-quality seafood dishes and generous portions at fair prices.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["seafood", "family", "fresh"]
+    address:
+      - loc: "Araneta St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/ginaseafoodsbacolod"
+  - name: Aboy's Restaurant
+    description: Highly regarded for fresh seafood and traditional Filipino home-style cooking, a consistent favorite for celebrations.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["seafood", "family", "celebration"]
+    address:
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/aboysbacolod"
+  - name: L'Fisher Hotel - Ripples Restaurant
+    description: Upscale dining inside L'Fisher Hotel offering international cuisine, buffets, and refined Negrense dishes.
+    cuisine: fusion
+    type: restaurant
+    ownership: local
+    price: "$$$"
+    tags: ["buffet", "hotel", "upscale"]
+    address:
+      - loc: "14th & Lacson Sts, Bacolod City"
+        gmap: "https://maps.app.goo.gl/lfisherbacolod"
+  - name: Peri-Peri Charcoal Chicken
+    description: Flavorful charcoal-grilled chicken with signature peri-peri sauce, offering various heat levels and sides.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$$"
+    tags: ["chicken", "grill", "spicy"]
+    address:
+      - loc: "SM City Bacolod, Bacolod City"
+        gmap: "https://maps.app.goo.gl/periperi"
+  - name: Lion's Park Grill Haus
+    description: Local favorite frequently cited as having some of the best chicken inasal in the city outside of Manokan Country.
+    cuisine: filipino
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["inasal", "chicken", "grill"]
+    address:
+      - loc: "Bacolod City"
+        gmap: "https://maps.app.goo.gl/lionsparkgrill"
