@@ -207,19 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'card';
       card.style.animationDelay = `${index * 50}ms`;
 
-      // Icons for meta badges
-      const typeIcon = getTypeIcon(place.type);
-      const cuisineIcon = getCuisineIcon(place.cuisine);
-
-      let tagsHtml = '';
-      if (place.tags && Array.isArray(place.tags)) {
-        tagsHtml = `
-          <div class="card__tags">
-            ${place.tags.map(tag => `<span class="card__tag">${tag}</span>`).join('')}
-          </div>
-        `;
-      }
-
       let mapsHtml = '';
       if (place.maps && Array.isArray(place.maps)) {
         mapsHtml = `
@@ -236,59 +223,15 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="card__header">
           <h2 class="card__name">${place.name}</h2>
-          ${place.price ? `<span class="card__price">${place.price}</span>` : ''}
         </div>
         
         ${place.description ? `<p class="card__description">${place.description}</p>` : ''}
         
-        <div class="card__meta">
-          ${place.cuisine ? `
-            <span class="card__badge">
-              <span class="card__badge-icon">${cuisineIcon}</span> ${place.cuisine}
-            </span>
-          ` : ''}
-          ${place.type ? `
-            <span class="card__badge">
-              <span class="card__badge-icon">${typeIcon}</span> ${place.type}
-            </span>
-          ` : ''}
-          ${place.ownership ? `
-            <span class="card__badge">
-              <span class="card__badge-icon">🏢</span> ${place.ownership}
-            </span>
-          ` : ''}
-        </div>
-
-        ${tagsHtml}
         ${mapsHtml}
       `;
 
       els.grid.appendChild(card);
     });
-  }
-
-  // Helpers for icons
-  function getTypeIcon(type) {
-    if (!type) return '•';
-    const t = type.toLowerCase();
-    if (t.includes('cafe')) return '☕';
-    if (t.includes('restaurant')) return '🍽️';
-    if (t.includes('bar')) return '🍻';
-    if (t.includes('stall') || t.includes('street')) return '⛺';
-    return '•';
-  }
-
-  function getCuisineIcon(cuisine) {
-    if (!cuisine) return '•';
-    const c = cuisine.toLowerCase();
-    if (c.includes('asian')) return '🥢';
-    if (c.includes('western') || c.includes('american')) return '🍔';
-    if (c.includes('japanese')) return '🍱';
-    if (c.includes('korean')) return '🥩';
-    if (c.includes('italian')) return '🍕';
-    if (c.includes('filipino')) return '🍚';
-    if (c.includes('mexican')) return '🌮';
-    return '🍲';
   }
 
   // Run
