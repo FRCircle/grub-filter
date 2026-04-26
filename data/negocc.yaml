@@ -5,6 +5,7 @@ places:
     type: cafe
     ownership: international
     price: "$$"
+    location: ["Bacolod City", "Bago City"]
     tags: ["coffee", "pastries", "wifi"]
     #maps:
     #  - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
@@ -16,6 +17,7 @@ places:
     type: restaurant
     ownership: local
     price: "$"
+    location: ["Bago City"]
     tags: ["rice", "chicken", "barbecue",]
     #maps:
     #  - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
@@ -25,6 +27,7 @@ places:
     type: restaurant
     ownership: international
     price: "$$"
+    location: ["Bacolod City"]
     tags: ["rice", "curry", "japanese"]
     #maps:
     #  - "https://maps.app.goo.gl/ND2wsX1hgCC6xTo66"
