@@ -2,7 +2,7 @@ title: "Bago City"
 places:
   - name: Side Bites
     description: Test
-    cuisine: asian
+    cuisine: fusion
     type: cafe
     ownership: international
     price: "$"
@@ -12,7 +12,7 @@ places:
         gmap: "https://maps.app.goo.gl/placeholder1"
   - name: McDonald's
     description: International chain
-    cuisine: asian
+    cuisine: american
     type: fastfood
     ownership: local
     price: "$"

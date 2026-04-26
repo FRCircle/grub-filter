@@ -4,7 +4,7 @@ places:
     description: Famous international coffee shop chain
     cuisine: western
     type: cafe
-    ownership: international
+    ownership: american
     price: "$$"
     tags: ["coffee", "pastries", "wifi"]
     address: 
@@ -16,7 +16,7 @@ places:
         gmap: "https://maps.app.goo.gl/ZrGHRBoAZtCFXJqBA"
   - name: Aida's Chicken
     description: Local inasal chain
-    cuisine: asian
+    cuisine: filipino
     type: restaurant
     ownership: local
     price: "$"
