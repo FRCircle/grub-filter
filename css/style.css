@@ -318,11 +318,6 @@ body::before {
   background: var(--accent-hover);
 }
 
-.chip__count {
-  font-size: 0.7rem;
-  opacity: 0.7;
-}
-
 .results-info {
   display: flex;
   align-items: center;

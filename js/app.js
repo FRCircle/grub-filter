@@ -131,10 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       sortedKeys.forEach(val => {
-        const count = filterData[key].get(val);
         const btn = document.createElement('button');
         btn.className = 'chip';
-        btn.innerHTML = `${val} <span class="chip__count">${count}</span>`;
+        btn.innerHTML = `${val}`;
         
         btn.addEventListener('click', () => toggleFilter(key, val, btn));
         container.appendChild(btn);
