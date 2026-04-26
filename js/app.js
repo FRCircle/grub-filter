@@ -303,6 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
       card.innerHTML = `
         <div class="card__header">
           <h2 class="card__name">${place.name}</h2>
+          <div class="card__meta">
+            <span class="card__tag card__tag--cuisine">${place.cuisine}</span>
+            <span class="card__tag card__tag--type">${place.type}</span>
+            <span class="card__tag card__tag--price">${place.price}</span>
+          </div>
         </div>
         
         ${place.description ? `<p class="card__description">${place.description}</p>` : ''}
