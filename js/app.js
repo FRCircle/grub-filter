@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let allLocations = {};
   let currentFile = '';
   let allPlaces = [];
+  let currentFilteredPlaces = [];
+  let currentPage = 1;
+  const itemsPerPage = 10;
   let activeFilters = {
     cuisine: new Set(),
     type: new Set(),
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     grid: document.getElementById('resultsGrid'),
     count: document.getElementById('resultsCount'),
     clearBtn: document.getElementById('clearFilters'),
+    paginationControls: document.getElementById('paginationControls'),
     filters: {
       cuisine: document.getElementById('filterCuisine'),
       type: document.getElementById('filterType'),
@@ -166,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Apply active filters to data
   function applyFilters() {
-    const filtered = allPlaces.filter(place => {
+    currentFilteredPlaces = allPlaces.filter(place => {
       // For each category, if it has active filters, the place must match AT LEAST ONE (OR within category)
       // All categories must pass (AND between categories)
       
@@ -185,12 +189,84 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    renderPlaces(filtered);
+    currentPage = 1;
+    renderPage();
+  }
+
+  function renderPage() {
+    const totalPages = Math.ceil(currentFilteredPlaces.length / itemsPerPage);
+    if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedPlaces = currentFilteredPlaces.slice(start, end);
+
+    renderPlaces(paginatedPlaces, currentFilteredPlaces.length);
+    renderPaginationControls(totalPages);
+  }
+
+  function renderPaginationControls(totalPages) {
+    if (!els.paginationControls) return;
+    
+    els.paginationControls.innerHTML = '';
+    
+    if (totalPages <= 1) {
+      els.paginationControls.style.display = 'none';
+      return;
+    }
+    
+    els.paginationControls.style.display = 'flex';
+    els.paginationControls.style.justifyContent = 'center';
+    els.paginationControls.style.alignItems = 'center';
+    els.paginationControls.style.gap = '1rem';
+    els.paginationControls.style.marginTop = '2rem';
+    
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'chip';
+    prevBtn.textContent = 'Previous';
+    prevBtn.disabled = currentPage === 1;
+    if (currentPage === 1) {
+      prevBtn.style.opacity = '0.5';
+      prevBtn.style.cursor = 'not-allowed';
+    }
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+    
+    const pageInfo = document.createElement('span');
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    pageInfo.style.fontWeight = '500';
+    
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'chip';
+    nextBtn.textContent = 'Next';
+    nextBtn.disabled = currentPage === totalPages;
+    if (currentPage === totalPages) {
+      nextBtn.style.opacity = '0.5';
+      nextBtn.style.cursor = 'not-allowed';
+    }
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+    
+    els.paginationControls.appendChild(prevBtn);
+    els.paginationControls.appendChild(pageInfo);
+    els.paginationControls.appendChild(nextBtn);
   }
 
   // Render places to DOM
-  function renderPlaces(places) {
-    els.count.innerHTML = `Showing <strong>${places.length}</strong> places`;
+  function renderPlaces(places, totalCount = places.length) {
+    let showingText = places.length > 0 ? `${(currentPage - 1) * itemsPerPage + 1}-${(currentPage - 1) * itemsPerPage + places.length}` : '0';
+    els.count.innerHTML = `Showing <strong>${showingText}</strong> of <strong>${totalCount}</strong> places`;
     els.grid.innerHTML = '';
 
     if (places.length === 0) {
