@@ -8,6 +8,9 @@ places:
     ownership: international
     price: "$"
     tags: ["coffee", "pastries", "wifi"]
+    address: 
+      - loc: "Bago City Public Market"
+        gmap: "https://maps.app.goo.gl/placeholder1"
   - name: McDonald's
     description: International chain
     cuisine: asian
@@ -16,3 +19,6 @@ places:
     ownership: local
     price: "$"
     tags: ["rice", "burger", "chicken"]
+    address: 
+      - loc: "Bago City Center"
+        gmap: "https://maps.app.goo.gl/placeholder2"

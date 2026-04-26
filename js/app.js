@@ -206,18 +206,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'card';
       card.style.animationDelay = `${index * 50}ms`;
-
-      let mapsHtml = '';
-      if (place.maps && Array.isArray(place.maps)) {
-        mapsHtml = `
-          <div class="card__maps">
-            ${place.maps.map((link, i) => `
-              <a href="${link}" target="_blank" rel="noopener noreferrer" class="card__map-link">
-                📍 Map ${i + 1}
+      
+      let addressHtml = '';
+      if (place.address && Array.isArray(place.address)) {
+        addressHtml = `
+          <div class="card__locations">
+            ${place.address.map((addr) => `
+              <a href="${addr.gmap}" target="_blank" rel="noopener noreferrer" class="card__location-link">
+                📍 ${addr.loc}
               </a>
             `).join('')}
           </div>
         `;
+      } else if (typeof place.address === 'string') {
+        addressHtml = `<p class="card__address">${place.address}</p>`;
       }
 
       card.innerHTML = `
@@ -227,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         ${place.description ? `<p class="card__description">${place.description}</p>` : ''}
         
-        ${mapsHtml}
+        ${addressHtml}
       `;
 
       els.grid.appendChild(card);

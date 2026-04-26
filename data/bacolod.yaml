@@ -8,10 +8,13 @@ places:
     ownership: international
     price: "$$"
     tags: ["coffee", "pastries", "wifi"]
-    #maps:
-    #  - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
-    #  - "https://maps.app.goo.gl/SSbSDKkhtdx3pNU67"
-    #  - "https://maps.app.goo.gl/ZrGHRBoAZtCFXJqBA"
+    address: 
+      - loc: "Lacson St, Bacolod City"
+        gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+      - loc: "Loc2"  
+        gmap: "https://maps.app.goo.gl/SSbSDKkhtdx3pNU67"
+      - loc: "Loc3"
+        gmap: "https://maps.app.goo.gl/ZrGHRBoAZtCFXJqBA"
   - name: Aida's Chicken
     description: Local inasal chain
     cuisine: asian
@@ -20,8 +23,9 @@ places:
     ownership: local
     price: "$"
     tags: ["rice", "chicken", "barbecue",]
-    #maps:
-    #  - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+    address: 
+      - loc: "Manokan Country, Bacolod City"
+        gmap: "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
   - name: CoCo Ichibanya
     description: Japanese curry chain
     cuisine: asian
@@ -30,5 +34,6 @@ places:
     ownership: international
     price: "$$"
     tags: ["rice", "curry"]
-    #maps:
-    #  - "https://maps.app.goo.gl/ND2wsX1hgCC6xTo66"
+    address:
+      - loc: "SM City Bacolod, Bacolod City"
+        gmap: "https://maps.app.goo.gl/ND2wsX1hgCC6xTo66"

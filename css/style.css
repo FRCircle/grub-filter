@@ -404,28 +404,44 @@ body::before {
   line-height: 1.55;
 }
 
-.card__maps {
+.card__address {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
+}
+
+.card__description {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: var(--space-md);
+}
+
+.card__locations {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--space-sm);
+  margin-top: auto;
   padding-top: var(--space-sm);
   border-top: 1px solid var(--border-subtle);
 }
 
-.card__map-link {
+.card__location-link {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
+  font-size: 0.82rem;
+  color: var(--text-primary);
   text-decoration: none;
-  padding: 0.3rem 0.65rem;
+  padding: 0.4rem 0.65rem;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   transition: all var(--duration-fast) ease;
+  background: var(--bg-surface);
 }
 
-.card__map-link:hover {
+.card__location-link:hover {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-soft);
