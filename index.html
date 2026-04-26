@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grub Filter</title>
+  <meta name="description" content="Filter and discover local food places.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- JS-YAML for parsing data/negocc.yaml -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    
+    <header class="header">
+      <span class="header__icon">🍔</span>
+      <h1 class="header__title">Grub Filter</h1>
+      <p class="header__subtitle">Find the perfect spot for your next meal.</p>
+    </header>
+
+    <main>
+      <section class="filter-panel" aria-label="Filters">
+        <div class="filter-panel__header">
+          <h2 class="filter-panel__title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Filters
+          </h2>
+          <button id="clearFilters" class="filter-panel__clear">Clear All</button>
+        </div>
+
+        <!-- Filter Groups injected by JS -->
+        <div class="filter-group">
+          <span class="filter-group__label">Cuisine</span>
+          <div id="filterCuisine" class="filter-group__chips"></div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group__label">Type</span>
+          <div id="filterType" class="filter-group__chips"></div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group__label">Price</span>
+          <div id="filterPrice" class="filter-group__chips"></div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group__label">Ownership</span>
+          <div id="filterOwnership" class="filter-group__chips"></div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group__label">Tags</span>
+          <div id="filterTags" class="filter-group__chips"></div>
+        </div>
+      </section>
+
+      <section aria-label="Results">
+        <div class="results-info">
+          <span id="resultsCount" class="results-info__count">Loading...</span>
+        </div>
+        
+        <div id="resultsGrid" class="card-grid">
+          <div class="loading">
+            <div class="loading__spinner"></div>
+            <p class="loading__text">Loading places database...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Data loaded dynamically from YAML. Open source on <a href="https://github.com/FRCircle/grub-filter" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </footer>
+
+  </div>
+
+  <!-- App Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

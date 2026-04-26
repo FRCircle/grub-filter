@@ -1,0 +1,258 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const DATA_URL = 'data/negocc.yaml';
+
+  // State
+  let allPlaces = [];
+  let activeFilters = {
+    cuisine: new Set(),
+    type: new Set(),
+    ownership: new Set(),
+    price: new Set(),
+    tags: new Set()
+  };
+
+  // DOM Elements
+  const els = {
+    grid: document.getElementById('resultsGrid'),
+    count: document.getElementById('resultsCount'),
+    clearBtn: document.getElementById('clearFilters'),
+    filters: {
+      cuisine: document.getElementById('filterCuisine'),
+      type: document.getElementById('filterType'),
+      ownership: document.getElementById('filterOwnership'),
+      price: document.getElementById('filterPrice'),
+      tags: document.getElementById('filterTags')
+    }
+  };
+
+  // Initialize
+  async function init() {
+    try {
+      const response = await fetch(DATA_URL);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const yamlText = await response.text();
+      
+      const data = jsyaml.load(yamlText);
+      allPlaces = data.places || [];
+
+      buildFilters();
+      applyFilters();
+      
+    } catch (e) {
+      console.error('Error loading data:', e);
+      els.grid.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state__icon">⚠️</span>
+          <h3 class="empty-state__title">Failed to load data</h3>
+          <p class="empty-state__text">Could not load the places database. Please try again later.</p>
+        </div>
+      `;
+    }
+  }
+
+  // Build filter UI dynamically based on data
+  function buildFilters() {
+    const filterData = {
+      cuisine: new Map(),
+      type: new Map(),
+      ownership: new Map(),
+      price: new Map(),
+      tags: new Map()
+    };
+
+    // Extract and count values
+    allPlaces.forEach(place => {
+      ['cuisine', 'type', 'ownership', 'price'].forEach(key => {
+        if (place[key]) {
+          const val = place[key].toLowerCase();
+          filterData[key].set(val, (filterData[key].get(val) || 0) + 1);
+        }
+      });
+      if (place.tags && Array.isArray(place.tags)) {
+        place.tags.forEach(tag => {
+          const val = tag.toLowerCase();
+          filterData.tags.set(val, (filterData.tags.get(val) || 0) + 1);
+        });
+      }
+    });
+
+    // Render chips
+    Object.keys(filterData).forEach(key => {
+      const container = els.filters[key];
+      if (!container) return;
+
+      container.innerHTML = '';
+      
+      // Sort alphabetically, or for price sort by length ($, $$, $$$)
+      let sortedKeys = Array.from(filterData[key].keys());
+      if (key === 'price') {
+        sortedKeys.sort((a, b) => a.length - b.length);
+      } else {
+        sortedKeys.sort();
+      }
+
+      sortedKeys.forEach(val => {
+        const count = filterData[key].get(val);
+        const btn = document.createElement('button');
+        btn.className = 'chip';
+        btn.innerHTML = `${val} <span class="chip__count">${count}</span>`;
+        
+        btn.addEventListener('click', () => toggleFilter(key, val, btn));
+        container.appendChild(btn);
+      });
+    });
+
+    els.clearBtn.addEventListener('click', clearAllFilters);
+  }
+
+  // Toggle a specific filter value
+  function toggleFilter(category, value, btnEl) {
+    if (activeFilters[category].has(value)) {
+      activeFilters[category].delete(value);
+      btnEl.classList.remove('chip--active');
+    } else {
+      activeFilters[category].add(value);
+      btnEl.classList.add('chip--active');
+    }
+    applyFilters();
+  }
+
+  // Clear all filters
+  function clearAllFilters() {
+    Object.keys(activeFilters).forEach(key => activeFilters[key].clear());
+    document.querySelectorAll('.chip--active').forEach(el => el.classList.remove('chip--active'));
+    applyFilters();
+  }
+
+  // Apply active filters to data
+  function applyFilters() {
+    const filtered = allPlaces.filter(place => {
+      // For each category, if it has active filters, the place must match AT LEAST ONE (OR within category)
+      // All categories must pass (AND between categories)
+      
+      return Object.keys(activeFilters).every(category => {
+        const activeSet = activeFilters[category];
+        if (activeSet.size === 0) return true; // No filter selected for this category = pass
+
+        if (category === 'tags') {
+          // If filtering by tags, the place must have AT LEAST ONE of the active tags
+          if (!place.tags || !Array.isArray(place.tags)) return false;
+          return place.tags.some(tag => activeSet.has(tag.toLowerCase()));
+        } else {
+          if (!place[category]) return false;
+          return activeSet.has(place[category].toLowerCase());
+        }
+      });
+    });
+
+    renderPlaces(filtered);
+  }
+
+  // Render places to DOM
+  function renderPlaces(places) {
+    els.count.innerHTML = `Showing <strong>${places.length}</strong> places`;
+    els.grid.innerHTML = '';
+
+    if (places.length === 0) {
+      els.grid.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state__icon">🍽️</span>
+          <h3 class="empty-state__title">No places found</h3>
+          <p class="empty-state__text">Try adjusting your filters to see more results.</p>
+        </div>
+      `;
+      return;
+    }
+
+    places.forEach((place, index) => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.style.animationDelay = `${index * 50}ms`;
+
+      // Icons for meta badges
+      const typeIcon = getTypeIcon(place.type);
+      const cuisineIcon = getCuisineIcon(place.cuisine);
+
+      let tagsHtml = '';
+      if (place.tags && Array.isArray(place.tags)) {
+        tagsHtml = `
+          <div class="card__tags">
+            ${place.tags.map(tag => `<span class="card__tag">${tag}</span>`).join('')}
+          </div>
+        `;
+      }
+
+      let mapsHtml = '';
+      if (place.maps && Array.isArray(place.maps)) {
+        mapsHtml = `
+          <div class="card__maps">
+            ${place.maps.map((link, i) => `
+              <a href="${link}" target="_blank" rel="noopener noreferrer" class="card__map-link">
+                📍 Map ${i + 1}
+              </a>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="card__header">
+          <h2 class="card__name">${place.name}</h2>
+          ${place.price ? `<span class="card__price">${place.price}</span>` : ''}
+        </div>
+        
+        ${place.description ? `<p class="card__description">${place.description}</p>` : ''}
+        
+        <div class="card__meta">
+          ${place.cuisine ? `
+            <span class="card__badge">
+              <span class="card__badge-icon">${cuisineIcon}</span> ${place.cuisine}
+            </span>
+          ` : ''}
+          ${place.type ? `
+            <span class="card__badge">
+              <span class="card__badge-icon">${typeIcon}</span> ${place.type}
+            </span>
+          ` : ''}
+          ${place.ownership ? `
+            <span class="card__badge">
+              <span class="card__badge-icon">🏢</span> ${place.ownership}
+            </span>
+          ` : ''}
+        </div>
+
+        ${tagsHtml}
+        ${mapsHtml}
+      `;
+
+      els.grid.appendChild(card);
+    });
+  }
+
+  // Helpers for icons
+  function getTypeIcon(type) {
+    if (!type) return '•';
+    const t = type.toLowerCase();
+    if (t.includes('cafe')) return '☕';
+    if (t.includes('restaurant')) return '🍽️';
+    if (t.includes('bar')) return '🍻';
+    if (t.includes('stall') || t.includes('street')) return '⛺';
+    return '•';
+  }
+
+  function getCuisineIcon(cuisine) {
+    if (!cuisine) return '•';
+    const c = cuisine.toLowerCase();
+    if (c.includes('asian')) return '🥢';
+    if (c.includes('western') || c.includes('american')) return '🍔';
+    if (c.includes('japanese')) return '🍱';
+    if (c.includes('korean')) return '🥩';
+    if (c.includes('italian')) return '🍕';
+    if (c.includes('filipino')) return '🍚';
+    if (c.includes('mexican')) return '🌮';
+    return '🍲';
+  }
+
+  // Run
+  init();
+});
