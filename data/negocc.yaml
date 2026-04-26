@@ -1,0 +1,30 @@
+places:
+  - name: Starbucks
+    description: Famous international coffee shop chain
+    cuisine: western
+    type: cafe
+    ownership: international
+    price: "$$"
+    tags: ["coffee", "pastries", "wifi"]
+    maps:
+      - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+      - "https://maps.app.goo.gl/SSbSDKkhtdx3pNU67"
+      - "https://maps.app.goo.gl/ZrGHRBoAZtCFXJqBA"
+  - name: Aida's Chicken
+    description: Local inasal chain
+    cuisine: asian
+    type: restaurant
+    ownership: local
+    price: "$"
+    tags: ["rice", "chicken", "barbecue",]
+    maps:
+      - "https://maps.app.goo.gl/3vbekHH4ep4Q3dqb9"
+  - name: CoCo Ichibanya
+    description: Japanese curry chain
+    cuisine: asian
+    type: restaurant
+    ownership: international
+    price: "$$"
+    tags: ["rice", "curry", "japanese"]
+    maps:
+      - "https://maps.app.goo.gl/ND2wsX1hgCC6xTo66"
